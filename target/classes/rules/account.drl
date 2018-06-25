@@ -1,0 +1,9 @@
+import com.test.model.Account;
+ 
+rule "nameRequired"
+when
+$account : Account( name == null )
+then
+  System.out.println( "Account name cannot be null!");
+ 
+end

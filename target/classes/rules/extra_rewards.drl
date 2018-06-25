@@ -1,0 +1,17 @@
+import com.test.model.Customer;
+import com.test.model.Transaction;
+import java.util.*;
+
+global com.test.model.Reward reward;
+dialect  "mvel"
+
+rule "Give Extra Rewards"
+    when
+        UserActivity($items:items,$lastActivityOfBuying : lastActivityOfBuying)
+        RewardPolicy($itemsForOffer: itemsForOffer,$startDateOfChallenge : startDateOfChallenge,$lastDateOfChallenge : lastDateOfChallenge,$challengeType : challengeType)
+        eval($challengeType.equals("tripleFun"))
+        eval($lastActivityOfBuying >= $startDateOfChallenge && $lastActivityOfBuying <= $lastDateOfChallenge)
+        eval($items.equals($itemsForOffer))
+    then
+        reward.setBonusStars(75); 
+end

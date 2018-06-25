@@ -1,0 +1,51 @@
+import com.test.model.UserActivity;
+import com.test.model.RewardPolicy;
+import java.util.*;
+
+global com.test.model.Reward reward;
+dialect  "mvel"
+
+rule "Check Reward Policy against User Activity for Triple Fun"
+    when
+        UserActivity($items:items,$lastActivityOfBuying : lastActivityOfBuying)
+        RewardPolicy($itemsForOffer: itemsForOffer,$startDateOfChallenge : startDateOfChallenge,$lastDateOfChallenge : lastDateOfChallenge,$challengeType : challengeType)
+        eval($challengeType.equals("tripleFun"))
+        eval($lastActivityOfBuying >= $startDateOfChallenge && $lastActivityOfBuying <= $lastDateOfChallenge)
+        eval($items.equals($itemsForOffer))
+    then
+        reward.setBonusStars(75); 
+end
+
+rule "Check Reward Policy against User Activity for Spring Dash 1"
+    when
+        UserActivity($items:items,$lastActivityOfBuying : lastActivityOfBuying)
+        RewardPolicy($itemsForOffer: itemsForOffer,$startDateOfChallenge : startDateOfChallenge,$lastDateOfChallenge : lastDateOfChallenge,$challengeType : challengeType)
+        eval($challengeType.equals("springDash"))
+        eval($lastActivityOfBuying >= $startDateOfChallenge && $lastActivityOfBuying <= $lastDateOfChallenge)
+        eval($items.size() == 3)
+    then
+        reward.setBonusStars(30); 
+end
+
+
+rule "Check Reward Policy against User Activity for Spring Dash 2"
+    when
+        UserActivity($items:items,$lastActivityOfBuying : lastActivityOfBuying)
+        RewardPolicy($itemsForOffer: itemsForOffer,$startDateOfChallenge : startDateOfChallenge,$lastDateOfChallenge : lastDateOfChallenge,$challengeType : challengeType)
+        eval($challengeType.equals("springDash"))
+        eval($lastActivityOfBuying >= $startDateOfChallenge && $lastActivityOfBuying <= $lastDateOfChallenge)
+        eval($items.size() == 5)
+    then
+        reward.setBonusStars(200); 
+end
+
+rule "Check Reward Policy against User Activity for Spring Dash 3"
+    when
+        UserActivity($items:items,$lastActivityOfBuying : lastActivityOfBuying)
+        RewardPolicy($itemsForOffer: itemsForOffer,$startDateOfChallenge : startDateOfChallenge,$lastDateOfChallenge : lastDateOfChallenge,$challengeType : challengeType)
+        eval($challengeType.equals("springDash"))
+        eval($lastActivityOfBuying >= $startDateOfChallenge && $lastActivityOfBuying <= $lastDateOfChallenge)
+        eval($items.size() == 6)
+    then
+        reward.setBonusStars(1000); 
+end

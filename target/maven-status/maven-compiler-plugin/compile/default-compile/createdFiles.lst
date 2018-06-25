@@ -1,0 +1,16 @@
+com/test/controller/FactController.class
+com/test/model/Customer.class
+com/test/model/UserActivity.class
+com/test/model/Item.class
+com/test/app/ApplicationRunner.class
+com/test/service/RewardCalculatorService.class
+com/test/controller/AccountController.class
+com/test/model/RewardPolicy.class
+com/test/service/AccountService.class
+com/test/model/SessionInfo.class
+com/test/service/FactService.class
+com/test/controller/RewardServiceController.class
+com/test/model/Reward.class
+com/test/model/Account.class
+com/test/model/Transaction.class
+com/test/configuration/KnowledgeBaseEnvironment.class
