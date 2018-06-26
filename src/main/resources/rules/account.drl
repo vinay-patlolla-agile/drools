@@ -1,3 +1,4 @@
+package com.test
 import com.test.model.Account;
  
 rule "nameRequired"
